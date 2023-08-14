@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["/home/vsts/work/1/s/Shopping/Shopping.API/Shopping.API.csproj", "Shopping.API/"]
+COPY --from=build /home/vsts/work/1/s/Shopping/Shopping.API/Shopping.API.csproj Shopping.API
 RUN dotnet restore "Shopping.API/Shopping.API.csproj"
 COPY . .
 WORKDIR "/src/Shopping.API"
