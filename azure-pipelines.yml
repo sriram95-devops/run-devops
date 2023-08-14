@@ -56,7 +56,7 @@ stages:
           containerRegistry: 'dockerhub'
           repository: 'sriram1995'
           command: 'build'
-          Dockerfile: '**/**/Shopping/Shopping.API/Dockerfile'
+          Dockerfile: '**/Shopping/Shopping.API/Dockerfile'
           tags: '$(Build.Repository.Name):$(Build.BuildId)'
       
       - task: Docker@2
