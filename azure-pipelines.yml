@@ -57,7 +57,7 @@ stages:
           repository: 'sriram1995'
           command: 'build'
           Dockerfile: '**/Shopping/Shopping.API/Dockerfile'
-          tags: '$(Build.Repository.Name)'
+          
       
       - task: Docker@2
         inputs:
