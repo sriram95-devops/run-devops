@@ -35,6 +35,8 @@ stages:
   - stage: Builddocker
     jobs:
     - job: 
+      pool:
+       vmImage: ubuntu-latest
       steps:
       - task: DockerInstaller@0
         inputs:
