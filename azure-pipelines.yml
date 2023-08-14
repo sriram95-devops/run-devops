@@ -18,7 +18,7 @@ stages:
           displayName: install .net 
           inputs:
             packageType: 'sdk'
-            version: '6'
+            version: '6.0.x'
       - job:  restore 
         steps:
         - task: DotNetCoreCLI@2
