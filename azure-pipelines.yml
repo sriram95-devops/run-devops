@@ -30,7 +30,7 @@ stages:
         - task: DotNetCoreCLI@2
           displayName: build
           inputs:
-            command: 'Build'
+            command: 'build'
             projects: '**/**/Shopping.API/*.csproj'
   - stage: Builddocker
     jobs:
