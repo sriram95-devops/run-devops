@@ -41,7 +41,7 @@ stages:
           dockerVersion: '17.09.0-ce'
       - task: CmdLine@2
         inputs:
-          script: '''docker login $(artifactory_url) -U $(artifactoryuser) -p $(artifactorypass)'''
+          script: 'docker login $(artifactory_url) -u $(artifactoryuser) -p $(artifactorypass)'
            
       - task: Docker@2
         displayName: dockerbuild
