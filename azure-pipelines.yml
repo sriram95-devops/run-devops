@@ -39,18 +39,29 @@ stages:
       - task: DockerInstaller@0
         inputs:
           dockerVersion: '17.09.0-ce'
-      - task: CmdLine@2
+#      - task: CmdLine@2
+ #       inputs:
+  #        script: 'docker login $(artifactory_url) -u $(artifactoryuser) -p $(artifactorypass)'
+        
+      - task: Docker@1
         inputs:
-          script: 'docker login $(artifactory_url) -u $(artifactoryuser) -p $(artifactorypass)'
+          containerregistrytype: 'Container Registry'
+          dockerRegistryEndpoint: 'dockerhub'
+          command: 'login'
+      
            
       - task: Docker@2
         displayName: dockerbuild
         inputs:
-         command: build
-         tags: sriram1995/$pipelinename:$buildId
-         Dockerfile: '**/**/Shopping.API/**/dockerfile'
+          containerRegistry: 'dockerhub'
+          repository: 'sriram1995'
+          command: 'build'
+          Dockerfile: '**/**/Shopping.API/**/dockerfile'
+          tags: '$(Build.Repository.Name):$(Build.BuildId)'
       
       - task: Docker@2
-        displayName: push
         inputs:
-          command: push
+            containerRegistry: 'dockerhub'
+            repository: 'sriram1995'
+            command: 'push'
+            tags: '$(Build.Repository.Name):$(Build.BuildId)'
